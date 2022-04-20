@@ -27,7 +27,7 @@ namespace CurrentWeather
             //Get data
             var cityName = JObject.Parse(weather)["name"];
 
-            //var weatherSky = JObject.Parse(weather).GetValue("main").ToString(); //need to get "main" from "weather"
+            var weatherSky = JObject.Parse(weather)["weather"][0]["main"].ToString(); //need to get "main" from "weather"
 
             var temp = double.Parse(JObject.Parse(weather)["main"]["temp"].ToString());
 
@@ -37,8 +37,7 @@ namespace CurrentWeather
             var maxTemp = double.Parse(JObject.Parse(weather)["main"]["temp_max"].ToString());
 
             Console.WriteLine($"Current weather in {cityName}:\n");
-            //Console.WriteLine($"It's {temp} degrees Fahrenheit and {weatherSky}.\n");
-            //Console.WriteLine($"Temperature: {temp} degrees Fahrenheit");
+            Console.WriteLine($"It's {temp} degrees Fahrenheit and {weatherSky}.\n");
             Console.WriteLine($"Today's high is {maxTemp} with a low of {minTemp}.\n");
 
             Console.WriteLine($"It feels like {feelsLike} degrees out.");
